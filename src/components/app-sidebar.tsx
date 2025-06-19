@@ -14,17 +14,17 @@ import {
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     icon: Home,
   },
   {
     title: "Datasets",
-    url: "#",
+    url: "/datasets",
     icon: Inbox,
   },
   {
     title: "Scenarios",
-    url: "#",
+    url: "/scenarios",
     icon: Calendar,
   },
 ];
