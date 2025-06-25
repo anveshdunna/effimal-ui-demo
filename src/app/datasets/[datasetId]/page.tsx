@@ -4,12 +4,10 @@ import { ArrowUpload16, Edit16, Grid16, History16 } from "@/components/icons";
 import DatasetSheets from "./DatasetSheets";
 import FileUploadSection from "./FileUploadSection";
 
-export default async function DatasetDetailPage({
-  params,
-}: {
-  params: { datasetId: string };
+export default async function DatasetDetailPage(props: {
+  params: Promise<{ datasetId: string }>;
 }) {
-  const { datasetId } = await params;
+  const { datasetId } = (await props.params);
   const isEven = Number(datasetId) % 2 === 0;
 
   return (
@@ -24,17 +22,25 @@ export default async function DatasetDetailPage({
           </p>
         </div>
         <div className="flex flex-row-reverse gap-2">
-          <Button size="sm">
+          <Button size="sm" className={isEven ? "hidden" : ""}>
             <ArrowUpload16 />
             Import data
           </Button>
           <Button variant="ghost" size="icon">
             <Edit16 />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button
+            variant="ghost"
+            size="icon"
+            className={isEven ? "hidden" : ""}
+          >
             <History16 />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button
+            variant="ghost"
+            size="icon"
+            className={isEven ? "hidden" : ""}
+          >
             <Grid16 />
           </Button>
         </div>
