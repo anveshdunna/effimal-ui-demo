@@ -7,6 +7,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/tab-nav";
 import SheetSet1 from "./SheetSet1";
+import SheetSet2 from "./SheetSet2";
 
 export default function DatasetSheets({ datasetId }: { datasetId: string }) {
   const [sheetId, setSheetId] = useState<string>("101");
@@ -25,7 +26,7 @@ export default function DatasetSheets({ datasetId }: { datasetId: string }) {
 
   return (
     <>
-      <div className="px-12 shadow-border-bottom">
+      <div className="shadow-border-bottom px-12">
         <NavigationMenu className="-mx-3">
           <NavigationMenuItem>
             <NavigationMenuLink
@@ -49,13 +50,13 @@ export default function DatasetSheets({ datasetId }: { datasetId: string }) {
       </div>
 
       {sheetId === "101" && (
-        <div className="px-12 pt-6 w-full">
+        <div className="mb-6 w-full">
           <SheetSet1 />
         </div>
       )}
       {sheetId === "202" && (
-        <div className="bg-gray-50 p-16 mt-4 border rounded">
-          📊 This is Sheet 2
+        <div className="mb-6 w-full">
+          <SheetSet2 />
         </div>
       )}
     </>
