@@ -1,12 +1,9 @@
 import { ModeToggle } from "@/components/ThemeToggle";
-import { Button } from "@/components/ui/button";
-// import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="items-center bg-background justify-items-center p-8 pb-20 gap-16 sm:p-20">
-      Testing homepage
-      <Button>New button</Button>
+    <div className="bg-background items-center justify-items-center gap-16 p-8 pb-20 sm:p-20">
+      Homepage will be empty
       <ModeToggle />
     </div>
   );

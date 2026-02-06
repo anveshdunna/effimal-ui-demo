@@ -3,11 +3,23 @@ import { ArrowUpload16, Edit16, Grid16, History16 } from "@/components/icons";
 
 import DatasetSheets from "./DatasetSheets";
 import FileUploadSection from "./FileUploadSection";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default async function DatasetDetailPage(props: {
   params: Promise<{ datasetId: string }>;
 }) {
-  const { datasetId } = (await props.params);
+  const { datasetId } = await props.params;
   const isEven = Number(datasetId) % 2 === 0;
 
   return (
@@ -26,9 +38,43 @@ export default async function DatasetDetailPage(props: {
             <ArrowUpload16 />
             Import data
           </Button>
-          <Button variant="ghost" size="icon">
-            <Edit16 />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Edit16 />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Edit dataset</DialogTitle>
+
+                <div className="grid gap-4">
+                  <div className="grid gap-1.5">
+                    <Label htmlFor="name-1">Name</Label>
+                    <Input
+                      id="name-1"
+                      name="name"
+                      defaultValue={`Dataset sample ${datasetId}`}
+                    />
+                  </div>
+                  <div className="grid gap-1.5">
+                    <Label htmlFor="description-1">Description</Label>
+                    <Input
+                      id="description-1"
+                      name="description"
+                      defaultValue="Dataset description"
+                    />
+                  </div>
+                </div>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="secondary">Cancel</Button>
+                </DialogClose>
+                <Button type="submit">Save changes</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
           <Button
             variant="ghost"
             size="icon"
